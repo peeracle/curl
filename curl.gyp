@@ -2,21 +2,27 @@
   'includes': [
     '../../build/common.gypi',
   ],
+  'variables': {
+    'openssl_win32%': 'C:\\OpenSSL-Win32\\include'
+  },
   'targets': [
     {
       'target_name': 'curl',
       'type': 'static_library',
-      'defines': [
-        'HAVE_CONFIG_H',
-        'BUILDING_LIBCURL',
-        'CURL_STATICLIB',
-        'CURL_HIDDEN_SYMBOLS'
-      ],
       'include_dirs': [
         'config/<(OS)/<(target_arch)',
+        'config/<(OS)/<(target_arch)/curl',
         'include/curl',
         'include',
         'lib'
+      ],
+      'defines': [
+        'HTTP_ONLY',
+        'USE_OPENSSL',
+        'USE_IPV6',
+        'HAVE_CONFIG_H'
+        'BUILDING_LIBCURL',
+        'CURL_STATICLIB'
       ],
       'sources': [
         'lib/file.c',
@@ -136,11 +142,33 @@
         'lib/vtls/darwinssl.c',
         'lib/vtls/gskit.c'
       ],
-      'link_settings': {
-        'libraries': [
-          '-lz'
-        ],
-      },
+      'conditions': [
+        ['OS == "linux" or OS == "mac"', {
+          'link_settings': {
+            'libraries': [
+              '-lz'
+            ],
+          },
+        }],
+        ['OS == "win"', {
+          'include_dirs': [
+            '<(openssl_win32)',
+          ],
+          'msvs_settings': {
+            'VCCLCompilerTool': {
+              'CompileAs': '1',
+              'WarningLevel': '3',
+            }
+          },
+          'direct_dependent_settings': {
+            'link_settings': {
+              'libraries': [
+                '-lws2_32.lib',
+              ],
+            },
+          },
+        }],
+      ],
     }
   ]
 }
