@@ -138,8 +138,6 @@
       ],
       'link_settings': {
         'libraries': [
-          '-lidn',
-          '-lcrypto',
           '-lz'
         ],
       },
