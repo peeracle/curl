@@ -399,13 +399,13 @@
 /* #undef HAVE_LIBRESSL */
 
 /* Define to 1 if you have the <librtmp/rtmp.h> header file. */
-#define HAVE_LIBRTMP_RTMP_H 1
+#define HAVE_LIBRTMP_RTMP_H 0
 
 /* Define to 1 if you have the `ssh2' library (-lssh2). */
 #define HAVE_LIBSSH2 1
 
 /* Define to 1 if you have the <libssh2.h> header file. */
-#define HAVE_LIBSSH2_H 1
+#define HAVE_LIBSSH2_H 0
 
 /* Define to 1 if you have the `ssl' library (-lssl). */
 #define HAVE_LIBSSL 1
