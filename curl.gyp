@@ -13,7 +13,7 @@
       'direct_dependent_settings': {
         'defines': [
           'CURL_STATICLIB',
-		],
+        ],
         'include_dirs': [
           'config/<(OS)/<(target_arch)/curl',
         ],
@@ -153,6 +153,7 @@
         ['OS == "linux" or OS == "mac"', {
           'link_settings': {
             'libraries': [
+              '-lidn',
               '-lz'
             ],
           },
