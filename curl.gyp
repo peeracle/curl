@@ -1,7 +1,4 @@
 {
-  'variables': {
-    'openssl_win32%': 'C:\\OpenSSL-Win32\\include'
-  },
   'targets': [
     {
       'target_name': 'curl',
@@ -14,6 +11,9 @@
         'lib'
       ],
       'direct_dependent_settings': {
+        'defines': [
+          'CURL_STATICLIB',
+		],
         'include_dirs': [
           'config/<(OS)/<(target_arch)/curl',
         ],
@@ -158,9 +158,6 @@
           },
         }],
         ['OS == "win"', {
-          'include_dirs': [
-            '<(openssl_win32)',
-          ],
           'msvs_settings': {
             'VCCLCompilerTool': {
               'CompileAs': '1',

@@ -2315,7 +2315,7 @@ static int X509V3_ext(struct SessionHandle *data,
                       int certnum,
                       STACK_OF(X509_EXTENSION) *exts)
 {
-  int i;
+  size_t i;
   size_t j;
 
   if(sk_X509_EXTENSION_num(exts) <= 0)
