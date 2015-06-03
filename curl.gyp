@@ -20,7 +20,7 @@
         'HTTP_ONLY',
         'USE_OPENSSL',
         'USE_IPV6',
-        'HAVE_CONFIG_H'
+        'HAVE_CONFIG_H',
         'BUILDING_LIBCURL',
         'CURL_STATICLIB'
       ],
