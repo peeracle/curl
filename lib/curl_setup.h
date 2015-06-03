@@ -37,6 +37,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
+
 #include "curl_config.h"
 
 #else /* HAVE_CONFIG_H */

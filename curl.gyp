@@ -1,7 +1,4 @@
 {
-  'includes': [
-    '../../build/common.gypi',
-  ],
   'variables': {
     'openssl_win32%': 'C:\\OpenSSL-Win32\\include'
   },
@@ -16,10 +13,20 @@
         'include',
         'lib'
       ],
+      'direct_dependent_settings': {
+        'include_dirs': [
+          'config/<(OS)/<(target_arch)/curl',
+        ],
+      },
+      'dependencies': [
+        '<(peeracle_webrtc_root)/chromium/src/third_party/boringssl/boringssl.gyp:boringssl'
+      ],
       'defines': [
         'HTTP_ONLY',
         'USE_OPENSSL',
+        'USE_SSLEAY',
         'USE_IPV6',
+        'HAVE_BORINGSSL',
         'HAVE_CONFIG_H',
         'BUILDING_LIBCURL',
         'CURL_STATICLIB'

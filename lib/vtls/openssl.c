@@ -1448,7 +1448,7 @@ end:
 
 /* The SSL_CTRL_SET_MSG_CALLBACK doesn't exist in ancient OpenSSL versions
    and thus this cannot be done there. */
-#ifdef SSL_CTRL_SET_MSG_CALLBACK
+#if defined(SSL_CTRL_SET_MSG_CALLBACK) && !defined(HAVE_BORINGSSL)
 
 static const char *ssl_msg_type(int ssl_ver, int msg)
 {
@@ -1778,7 +1778,7 @@ static CURLcode ossl_connect_step1(struct connectdata *conn, int sockindex)
   SSL_CTX_set_mode(connssl->ctx, SSL_MODE_RELEASE_BUFFERS);
 #endif
 
-#ifdef SSL_CTRL_SET_MSG_CALLBACK
+#if defined(SSL_CTRL_SET_MSG_CALLBACK) && !defined(HAVE_BORINGSSL)
   if(data->set.fdebug && data->set.verbose) {
     /* the SSL trace callback is only used for verbose logging so we only
        inform about failures of setting it */

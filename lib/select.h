@@ -36,10 +36,7 @@
 
 #if !defined(HAVE_STRUCT_POLLFD) && \
     !defined(HAVE_SYS_POLL_H) && \
-    !defined(HAVE_POLL_H) && \
-    !defined(HAVE_WINSOCK2_H)
-
-#pragma warning(disable : 4005)
+    !defined(HAVE_POLL_H)
 
 #define POLLIN      0x01
 #define POLLPRI     0x02
