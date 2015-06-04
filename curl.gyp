@@ -156,6 +156,11 @@
               '-lidn',
               '-lz'
             ],
+            'xcode_settings': {
+              'OTHER_LDFLAGS': [
+                '-lz'
+              ],
+            },
           },
         }],
         ['OS == "win"', {
