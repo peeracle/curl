@@ -19,6 +19,7 @@
         ],
       },
       'dependencies': [
+        '<(DEPTH)/third_party/zlib/zlib.gyp:zlib',
         '<(peeracle_webrtc_root)/chromium/src/third_party/boringssl/boringssl.gyp:boringssl'
       ],
       'defines': [
@@ -150,17 +151,11 @@
         'lib/vtls/gskit.c'
       ],
       'conditions': [
-        ['OS == "linux" or OS == "mac"', {
+        ['OS == "linux"', {
           'link_settings': {
             'libraries': [
-              '-lidn',
-              '-lz'
+              '-lidn'
             ],
-            'xcode_settings': {
-              'OTHER_LDFLAGS': [
-                '-lz'
-              ],
-            },
           },
         }],
         ['OS == "win"', {
